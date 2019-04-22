@@ -14,7 +14,7 @@ while (cap.isOpened()):
 
     height = canny.shape[0]
     polygons = np.array([
-        [(300, height), (1700, height), (1100, 600)]
+        [(20, height), (1900, height), (1200, 600), (1120, 600)]
     ])
     mask = np.zeros_like(canny)
     cv2.fillPoly(mask, polygons, 255)
