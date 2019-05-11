@@ -31,7 +31,7 @@ def average_slope_intercept (image, lines):
 def canny (image):
     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     blur = cv2.GaussianBlur(gray, (5, 5), 0)
-    canny = cv2.Canny(blur, 50, 150)
+    canny = cv2.Canny(blur, 150, 150)
     return canny
 
 def display_lines (image, lines):
@@ -43,25 +43,25 @@ def display_lines (image, lines):
 
 def region_of_interest (image):
     height = image.shape[0]
-    polygons = np.array([
+    see_field = np.array([
         [(20, height), (1900, height), (1200, 600), (1120, 600)]
     ])
     mask = np.zeros_like(image)
-    cv2.fillPoly(mask, polygons, 255)
+    cv2.fillPoly(mask,  see_field, 255)
     masked_image = cv2.bitwise_and(image, mask)
     return masked_image
 
-cap = cv2.VideoCapture('countryroad.mp4')
+cap = cv2.VideoCapture('road.mp4')
 
 while (cap.isOpened()):
     _, frame = cap.read()
 
     canny_image = canny(frame)
     cropped_image = region_of_interest(canny_image)
-    lines = cv2.HoughLinesP(cropped_image, 2, np.pi/180, 100, np.array([]), minLineLength=40, maxLineGap=100)
+    lines = cv2.HoughLinesP(cropped_image, 2, np.pi/180, 100, np.array([]), minLineLength=40, maxLineGap=5)
     averaged_lines = average_slope_intercept(frame, lines)
     line_image = display_lines(frame, averaged_lines)
-    combo_image = cv2.addWeighted(frame, 0.8, line_image, 1, 1)
+    combo_image = cv2.addWeighted(frame, 0.5, line_image, 1, 1)
 
     cv2.imshow('frame', combo_image)
     if cv2.waitKey(1) & 0xFF == ord('q'):
