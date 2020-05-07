@@ -15,8 +15,8 @@ pip install -r requirements.txt
 
 ## Requirements
 
-- ![OpenCV](https://pypi.org/project/opencv-python/) Version 4.2.0
-- ![Numpy](https://pypi.org/project/numpy/) Version 1.18.4
+- [OpenCV](https://pypi.org/project/opencv-python/) Version 4.2.0
+- [Numpy](https://pypi.org/project/numpy/) Version 1.18.4
 
 ## Running the tests
 
@@ -43,4 +43,4 @@ pytest
 
 ## License
 
-This project is licensed under the **MIT License** - see the ![LICENSE.md](https://github.com/Drinkler/OpenCV-Lane-Detection/blob/master/LICENSE) file for details
+This project is licensed under the **MIT License** - see the [LICENSE.md](https://github.com/Drinkler/OpenCV-Lane-Detection/blob/master/LICENSE) file for details
