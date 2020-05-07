@@ -2,7 +2,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-def make_coordinates (image, line_parameters):
+
+def make_coordinates(image, line_parameters):
     slope, intercept = line_parameters
     y1 = image.shape[0]
     y2 = int(y1 * (3/5))
@@ -10,7 +11,8 @@ def make_coordinates (image, line_parameters):
     x2 = int((y2 - intercept) / slope)
     return np.array([x1, y1, x2, y2])
 
-def average_slope_intercept (image, lines):
+
+def average_slope_intercept(image, lines):
     left_fit = []
     right_fit = []
     for line in lines:
@@ -28,20 +30,23 @@ def average_slope_intercept (image, lines):
     right_line = make_coordinates(image, right_fit_average)
     return np.array([left_line, right_line])
 
-def canny (image):
+
+def canny(image):
     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     blur = cv2.GaussianBlur(gray, (5, 5), 0)
     canny = cv2.Canny(blur, 150, 150)
     return canny
 
-def display_lines (image, lines):
+
+def display_lines(image, lines):
     line_image = np.zeros_like(image)
     if lines is not None:
         for x1, y1, x2, y2 in lines:
             cv2.line(line_image, (x1, y1), (x2, y2), (255, 0, 0), 10)
     return line_image
 
-def region_of_interest (image):
+
+def region_of_interest(image):
     height = image.shape[0]
     see_field = np.array([
         [(20, height), (1900, height), (1200, 600), (1120, 600)]
@@ -51,14 +56,16 @@ def region_of_interest (image):
     masked_image = cv2.bitwise_and(image, mask)
     return masked_image
 
-cap = cv2.VideoCapture('countryroad.mp4')
+
+cap = cv2.VideoCapture('../res/countryroad.mp4')
 
 while (cap.isOpened()):
     _, frame = cap.read()
 
     canny_image = canny(frame)
     cropped_image = region_of_interest(canny_image)
-    lines = cv2.HoughLinesP(cropped_image, 2, np.pi/180, 100, np.array([]), minLineLength=40, maxLineGap=5)
+    lines = cv2.HoughLinesP(cropped_image, 2, np.pi/180,
+                            100, np.array([]), minLineLength=40, maxLineGap=5)
     averaged_lines = average_slope_intercept(frame, lines)
     line_image = display_lines(frame, averaged_lines)
     combo_image = cv2.addWeighted(frame, 0.5, line_image, 1, 1)
