@@ -20,8 +20,8 @@ pip install -r requirements.txt
 
 ## Running the tests
 
-This project was tested with Python 3.7.4.
-This tests are only created for passing the build.
+This project was tested with Python Version 3.7.4.
+These tests are only created to pass the build.
 
 ```python
 def func(x):
