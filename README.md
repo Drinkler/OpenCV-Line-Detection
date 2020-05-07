@@ -1,8 +1,8 @@
 # OpenCV-Lane-Detection
 
 [![Build Status](https://travis-ci.com/Drinkler/OpenCV-Lane-Detection.svg?branch=master)](https://travis-ci.com/Drinkler/OpenCV-Lane-Detection)
-![GitHub issues](https://img.shields.io/github/issues/drinkler/OpenCV-Lane-Detection)
-![GitHub](https://img.shields.io/github/license/drinkler/OpenCV-Lane-Detection)
+[![GitHub issues](https://img.shields.io/github/issues/drinkler/OpenCV-Lane-Detection)](https://github.com/Drinkler/OpenCV-Lane-Detection/issues)
+[![GitHub](https://img.shields.io/github/license/drinkler/OpenCV-Lane-Detection)](https://github.com/Drinkler/OpenCV-Lane-Detection/blob/master/LICENSE)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/31439134cad24059b2afdf2080e97e48)](https://www.codacy.com/manual/Drinkler/OpenCV-Lane-Detection?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Drinkler/OpenCV-Lane-Detection&amp;utm_campaign=Badge_Grade)
 
 Lane Detection in OpenCV. To exit the program press "q".
